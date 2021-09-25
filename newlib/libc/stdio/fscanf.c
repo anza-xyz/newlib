@@ -21,6 +21,8 @@
 #include <stdarg.h>
 #include "local.h"
 
+#ifndef __bpf__
+
 #ifndef _REENT_ONLY
 
 int
@@ -59,4 +61,6 @@ _fscanf_r(struct _reent *ptr, FILE *__restrict fp, const char *__restrict fmt, .
 int
 _fiscanf_r (struct _reent *, FILE *, const char *, ...)
        _ATTRIBUTE ((__alias__("_fscanf_r")));
+#endif
+
 #endif

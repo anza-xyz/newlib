@@ -15,7 +15,7 @@
 
 	Defined if the float format does not support IEEE denormals.  Every
 	float with a zero exponent is taken to be a zero representation.
- 
+
    ??? At the moment, there are no equivalent macros above for doubles and
    the macros are not fully supported by --enable-newlib-hw-fp.
 
@@ -25,7 +25,7 @@
         with __IEEE_LITTLE_ENDIAN.
 
    __IEEE_LITTLE_ENDIAN
- 
+
         Defined if the float format is little endian.  This is mutually exclusive
         with __IEEE_BIG_ENDIAN.
 
@@ -34,11 +34,11 @@
 
    __IEEE_BYTES_LITTLE_ENDIAN
 
-        This flag is used in conjunction with __IEEE_BIG_ENDIAN to describe a situation 
+        This flag is used in conjunction with __IEEE_BIG_ENDIAN to describe a situation
 	whereby multiple words of an IEEE floating point are in big endian order, but the
 	words themselves are little endian with respect to the bytes.
 
-   _DOUBLE_IS_32BITS 
+   _DOUBLE_IS_32BITS
 
         This is used on platforms that support double by using the 32-bit IEEE
         float type.
@@ -47,7 +47,7 @@
 
         This represents what type a float arg is passed as.  It is used when the type is
         not promoted to double.
-	
+
 
    __OBSOLETE_MATH_DEFAULT
 
@@ -186,6 +186,10 @@
 #endif
 
 #ifdef _AM29K
+#define __IEEE_BIG_ENDIAN
+#endif
+
+#ifdef __bpf__
 #define __IEEE_BIG_ENDIAN
 #endif
 
@@ -507,4 +511,3 @@
 
 #endif /* not __IEEE_LITTLE_ENDIAN */
 #endif /* not __IEEE_BIG_ENDIAN */
-

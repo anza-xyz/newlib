@@ -5,6 +5,8 @@
 /* This code was derived from asprintf.c */
 /* doc in siprintf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -104,3 +106,5 @@ asniprintf (char *buf,
 }
 
 #endif /* ! _REENT_ONLY */
+
+#endif

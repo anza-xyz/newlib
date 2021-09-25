@@ -32,6 +32,7 @@
 #include <complex.h>
 #include <math.h>
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex
 csinhl(long double complex z)
 {
@@ -43,3 +44,4 @@ csinhl(long double complex z)
 	w = sinhl(x) * cosl(y) + (coshl(x) * sinl(y)) * I;
 	return w;
 }
+#endif

@@ -17,6 +17,8 @@
 /* doc in sprintf.c */
 /* This code created by modifying sprintf.c so copyright inherited. */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -96,4 +98,6 @@ int
 sniprintf (char *, size_t, const char *, ...)
        _ATTRIBUTE ((__alias__("snprintf")));
 #endif
+#endif
+
 #endif

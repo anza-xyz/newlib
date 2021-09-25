@@ -17,6 +17,8 @@
 /* This code was copied from asprintf.c */
 /* doc in siprintf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -76,3 +78,5 @@ asiprintf (char **strp,
 }
 
 #endif /* ! _REENT_ONLY */
+
+#endif

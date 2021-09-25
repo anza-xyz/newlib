@@ -16,6 +16,8 @@
  */
  /* Doc in swscanf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -54,3 +56,4 @@ _wscanf_r(struct _reent *ptr, const wchar_t *fmt, ...)
   return (ret);
 }
 
+#endif

@@ -40,7 +40,7 @@ SYNOPSIS
         int siscanf(const char *<[str]>, const char *<[format]>, ...);
 
         int _iscanf_r(struct _reent *<[ptr]>, const char *<[format]>, ...);
-        int _fiscanf_r(struct _reent *<[ptr]>, FILE *<[fd]>, 
+        int _fiscanf_r(struct _reent *<[ptr]>, FILE *<[fd]>,
                        const char *<[format]>, ...);
         int _siscanf_r(struct _reent *<[ptr]>, const char *<[str]>,
                    const char *<[format]>, ...);
@@ -72,6 +72,8 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 <<lseek>>, <<read>>, <<sbrk>>, <<write>>.
 */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -79,9 +81,9 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 #include <stdarg.h>
 #include "local.h"
 
-#ifndef _REENT_ONLY 
+#ifndef _REENT_ONLY
 
-int 
+int
 siscanf (const char *str,
        const char *fmt, ...)
 {
@@ -104,7 +106,7 @@ siscanf (const char *str,
 
 #endif /* !_REENT_ONLY */
 
-int 
+int
 _siscanf_r (struct _reent *ptr,
        const char *str,
        const char *fmt, ...)
@@ -125,3 +127,5 @@ _siscanf_r (struct _reent *ptr,
   va_end (ap);
   return ret;
 }
+
+#endif

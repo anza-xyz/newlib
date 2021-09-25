@@ -21,6 +21,8 @@
 #include <stdarg.h>
 #include "local.h"
 
+#ifndef __bpf__
+
 #ifndef _REENT_ONLY
 
 int
@@ -62,4 +64,6 @@ _scanf_r(struct _reent *ptr, const char *__restrict fmt, ...)
 int
 _iscanf_r (struct _reent *, const char *, ...)
        _ATTRIBUTE ((__alias__("_scanf_r")));
+#endif
+
 #endif

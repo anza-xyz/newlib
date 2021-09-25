@@ -28,6 +28,8 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+#ifndef __bpf__
+
 #include <sys/cdefs.h>
 __RCSID("$NetBSD: snprintf_chk.c,v 1.5 2008/04/28 20:23:00 martin Exp $");
 
@@ -57,3 +59,5 @@ __snprintf_chk(char * __restrict buf, size_t len, int flags, size_t slen,
 
 	return rv;
 }
+
+#endif

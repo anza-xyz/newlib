@@ -831,6 +831,7 @@ powerpc
 pru
 rl78
 rx
+sbf
 sh
 sparc
 spu
@@ -11945,6 +11946,8 @@ subdirs="$subdirs a29k"
 	rl78) subdirs="$subdirs rl78"
  ;;
 	rx) subdirs="$subdirs rx"
+ ;;
+	sbf) subdirs="$subdirs sbf"
  ;;
 	sh) subdirs="$subdirs sh"
  ;;

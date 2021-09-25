@@ -8,6 +8,8 @@
 
 #include <stdarg.h>
 
+#ifndef __bpf__
+
 int
 open (const char *file,
         int flags, ...)
@@ -21,3 +23,4 @@ open (const char *file,
   return ret;
 }
 
+#endif

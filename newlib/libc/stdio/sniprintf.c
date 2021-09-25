@@ -18,6 +18,8 @@
 /* This code created by modifying snprintf.c so copyright inherited. */
 /* doc in siprintf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -85,5 +87,7 @@ sniprintf (char *str,
     *f._p = 0;
   return (ret);
 }
+
+#endif
 
 #endif

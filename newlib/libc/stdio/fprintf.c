@@ -21,6 +21,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#ifndef __bpf__
+
 int
 _fprintf_r (struct _reent *ptr,
        FILE *__restrict fp,
@@ -62,3 +64,5 @@ fiprintf (FILE *, const char *, ...)
        _ATTRIBUTE ((__alias__("fprintf")));
 #endif
 #endif /* ! _REENT_ONLY */
+
+#endif

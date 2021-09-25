@@ -16,6 +16,8 @@
  */
 /* doc in swprintf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -52,3 +54,5 @@ fwprintf (FILE *__restrict fp,
 }
 
 #endif /* ! _REENT_ONLY */
+
+#endif

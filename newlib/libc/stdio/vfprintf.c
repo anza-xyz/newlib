@@ -108,6 +108,8 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 <<lseek>>, <<read>>, <<sbrk>>, <<write>>.
 */
 
+#ifndef __bpf__
+
 #if defined(LIBC_SCCS) && !defined(lint)
 /*static char *sccsid = "from: @(#)vfprintf.c	5.50 (Berkeley) 12/16/92";*/
 static char *rcsid = "$Id$";
@@ -2346,3 +2348,5 @@ get_arg (struct _reent *data,
   return &args[n];
 }
 #endif /* !_NO_POS_ARGS */
+
+#endif

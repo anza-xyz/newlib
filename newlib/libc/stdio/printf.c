@@ -22,6 +22,8 @@
 #include <stdarg.h>
 #include "local.h"
 
+#ifndef __bpf__
+
 int
 _printf_r (struct _reent *ptr,
        const char *__restrict fmt, ...)
@@ -64,3 +66,5 @@ iprintf (const char *, ...)
        _ATTRIBUTE ((__alias__("printf")));
 #endif
 #endif /* ! _REENT_ONLY */
+
+#endif

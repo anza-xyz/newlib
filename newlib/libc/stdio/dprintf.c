@@ -45,6 +45,8 @@ This function is originally a GNU extension in glibc and is not portable.
 Supporting OS subroutines required: <<sbrk>>, <<write>>.
 */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -95,3 +97,5 @@ diprintf (int, const char *, ...)
        _ATTRIBUTE ((__alias__("dprintf")));
 #endif
 #endif /* ! _REENT_ONLY */
+
+#endif

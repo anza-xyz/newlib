@@ -74,6 +74,8 @@ PORTABILITY
 C99, POSIX-1.2008
 */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <newlib.h>
@@ -1644,3 +1646,5 @@ get_arg (int n, va_list *ap, int *numargs_p, void **args)
   return args[n];
 }
 #endif /* !_NO_POS_ARGS */
+
+#endif

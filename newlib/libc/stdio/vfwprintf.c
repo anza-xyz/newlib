@@ -92,6 +92,9 @@ SEEALSO
  *
  * This code is large and complicated...
  */
+
+#ifndef __bpf__
+
 #include <newlib.h>
 
 #ifdef INTEGER_ONLY
@@ -2017,3 +2020,5 @@ get_arg (struct _reent *data,
   return &args[n];
 }
 #endif /* !_NO_POS_ARGS */
+
+#endif

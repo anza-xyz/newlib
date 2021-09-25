@@ -40,7 +40,7 @@ SYNOPSIS
         int sscanf(const char *restrict <[str]>, const char *restrict <[format]>, ...);
 
         int _scanf_r(struct _reent *<[ptr]>, const char *restrict <[format]>, ...);
-        int _fscanf_r(struct _reent *<[ptr]>, FILE *restrict <[fd]>, 
+        int _fscanf_r(struct _reent *<[ptr]>, FILE *restrict <[fd]>,
                       const char *restrict <[format]>, ...);
         int _sscanf_r(struct _reent *<[ptr]>, const char *restrict <[str]>,
                       const char *restrict <[format]>, ...);
@@ -306,7 +306,7 @@ DESCRIPTION
                 Stores a scanned pointer.  ANSI C leaves the details
 		to each implementation; this implementation treats
 		<<%p>> exactly the same as <<%U>>.  Corresponding
-		<[arg]>: <<(void **arg)>>.  
+		<[arg]>: <<(void **arg)>>.
                 o-
 
 	A <[pattern]> of characters surrounded by square brackets can be used
@@ -411,6 +411,8 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 <<lseek>>, <<read>>, <<sbrk>>, <<write>>.
 */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -418,9 +420,9 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 #include <stdarg.h>
 #include "local.h"
 
-#ifndef _REENT_ONLY 
+#ifndef _REENT_ONLY
 
-int 
+int
 sscanf (const char *__restrict str,
        const char * fmt, ...)
 {
@@ -449,7 +451,7 @@ siscanf (const char *, const char *, ...)
 
 #endif /* !_REENT_ONLY */
 
-int 
+int
 _sscanf_r (struct _reent *ptr,
        const char *__restrict str,
        const char *__restrict fmt, ...)
@@ -475,4 +477,6 @@ _sscanf_r (struct _reent *ptr,
 int
 _siscanf_r (struct _reent *, const char *, const char *, ...)
        _ATTRIBUTE ((__alias__("_sscanf_r")));
+#endif
+
 #endif

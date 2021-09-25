@@ -32,6 +32,7 @@
 #include <complex.h>
 #include <math.h>
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex
 ctanhl(long double complex z)
 {
@@ -45,3 +46,4 @@ ctanhl(long double complex z)
 
 	return w;
 }
+#endif

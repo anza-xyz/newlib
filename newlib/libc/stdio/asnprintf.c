@@ -5,6 +5,8 @@
 /* This code was derived from asprintf.c */
 /* doc in sprintf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -115,3 +117,5 @@ asniprintf (char *, size_t *, const char *, ...)
        _ATTRIBUTE ((__alias__("asnprintf")));
 #endif
 #endif /* ! _REENT_ONLY */
+
+#endif

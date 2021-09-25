@@ -538,6 +538,7 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 <<lseek>>, <<read>>, <<sbrk>>, <<write>>.
 */
 
+#ifndef __bpf__
 
 #include <_ansi.h>
 #include <reent.h>
@@ -629,5 +630,7 @@ swprintf (wchar_t *__restrict str,
   }
   return (ret);
 }
+
+#endif
 
 #endif

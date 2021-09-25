@@ -567,6 +567,8 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 <<lseek>>, <<read>>, <<sbrk>>, <<write>>.
 */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -626,4 +628,6 @@ int
 siprintf (char *, const char *, ...)
        _ATTRIBUTE ((__alias__("sprintf")));
 #endif
+#endif
+
 #endif

@@ -50,10 +50,10 @@ SYNOPSIS
         int iprintf(const char *<[format]>, ...);
         int fiprintf(FILE *<[fd]>, const char *<[format]> , ...);
         int siprintf(char *<[str]>, const char *<[format]>, ...);
-        int sniprintf(char *<[str]>, size_t <[size]>, const char *<[format]>, 
+        int sniprintf(char *<[str]>, size_t <[size]>, const char *<[format]>,
 			...);
         int asiprintf(char **<[strp]>, const char *<[format]>, ...);
-        char *asniprintf(char *<[str]>, size_t *<[size]>, 
+        char *asniprintf(char *<[str]>, size_t *<[size]>,
 			const char *<[format]>, ...);
 
         int _iprintf_r(struct _reent *<[ptr]>, const char *<[format]>, ...);
@@ -90,6 +90,8 @@ and <<asniprintf>> are newlib extensions.
 Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 <<lseek>>, <<read>>, <<sbrk>>, <<write>>.
 */
+
+#ifndef __bpf__
 
 #include <_ansi.h>
 #include <reent.h>
@@ -138,5 +140,7 @@ siprintf (char *str,
   *f._p = 0;
   return (ret);
 }
+
+#endif
 
 #endif

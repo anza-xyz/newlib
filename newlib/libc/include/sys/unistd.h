@@ -50,6 +50,9 @@ int     dup3 (int __fildes, int __fildes2, int flags);
 int	eaccess (const char *__path, int __mode);
 #endif
 #if __XSI_VISIBLE
+#ifdef __block
+#undef __block
+#endif
 void	encrypt (char *__block, int __edflag);
 #endif
 #if __BSD_VISIBLE || (__XSI_VISIBLE && __XSI_VISIBLE < 500)

@@ -69,6 +69,7 @@ if test -n "${machine_dir}"; then
 	pru) AC_CONFIG_SUBDIRS(pru) ;;
 	rl78) AC_CONFIG_SUBDIRS(rl78) ;;
 	rx) AC_CONFIG_SUBDIRS(rx) ;;
+	sbf) AC_CONFIG_SUBDIRS(sbf) ;;
 	sh) AC_CONFIG_SUBDIRS(sh) ;;
 	sparc) AC_CONFIG_SUBDIRS(sparc) ;;
 	spu) AC_CONFIG_SUBDIRS(spu) ;;

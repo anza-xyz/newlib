@@ -388,6 +388,9 @@
 #define	__noinline
 #endif
 
+#ifdef __nonnull
+#undef __nonnull
+#endif
 #if __GNUC_PREREQ__(3, 3)
 #define	__nonnull(x)	__attribute__((__nonnull__ x))
 #define	__nonnull_all	__attribute__((__nonnull__))
@@ -640,7 +643,7 @@
  * Type Safety Checking
  *
  * Clang provides additional attributes to enable checking type safety
- * properties that cannot be enforced by the C type system. 
+ * properties that cannot be enforced by the C type system.
  */
 
 #if __has_attribute(__argument_with_type_tag__) && \

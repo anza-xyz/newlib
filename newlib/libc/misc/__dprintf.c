@@ -4,6 +4,8 @@
    We do assume _write_r is working.
 */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include "ctype.h"
 #include "reent.h"
@@ -266,3 +268,5 @@ write_string (const char *s)
 {
   _write_r (_REENT, CONSOLE_FD, s, strlen (s));
 }
+
+#endif

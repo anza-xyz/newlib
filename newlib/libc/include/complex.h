@@ -97,13 +97,17 @@ float complex cpowf(float complex, float complex);
 /* 7.3.8.3 The csqrt functions */
 double complex csqrt(double complex);
 float complex csqrtf(float complex);
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex csqrtl(long double complex);
+#endif
 
 /* 7.3.9 Manipulation functions */
-/* 7.3.9.1 The carg functions */ 
+/* 7.3.9.1 The carg functions */
 double carg(double complex);
 float cargf(float complex);
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double cargl(long double complex);
+#endif
 
 /* 7.3.9.2 The cimag functions */
 double cimag(double complex);

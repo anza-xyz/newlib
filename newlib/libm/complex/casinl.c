@@ -36,6 +36,7 @@
 __weak_alias(casinl, _casinl)
 #endif
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex
 casinl(long double complex z)
 {
@@ -117,4 +118,4 @@ return;
 	w = zz * (-1.0L * I);
 	return w;
 }
-
+#endif

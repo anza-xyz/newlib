@@ -33,6 +33,7 @@
 #include <math.h>
 #include "cephes_subrl.h"
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex
 ccosl(long double complex z)
 {
@@ -43,3 +44,4 @@ ccosl(long double complex z)
 	w = cosl(creall(z)) * ch - (sinl(creall(z)) * sh) * I;
 	return w;
 }
+#endif

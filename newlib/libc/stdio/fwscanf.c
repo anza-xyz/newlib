@@ -15,7 +15,9 @@
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  */
 /* Doc in swscanf.c */
- 
+
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -51,3 +53,4 @@ _fwscanf_r (struct _reent *ptr, FILE *fp, const wchar_t *fmt, ...)
   return (ret);
 }
 
+#endif

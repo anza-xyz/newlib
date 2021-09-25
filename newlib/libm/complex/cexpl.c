@@ -32,6 +32,7 @@
 #include <complex.h>
 #include <math.h>
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex
 cexpl(long double complex z)
 {
@@ -44,3 +45,4 @@ cexpl(long double complex z)
 	w = r * cosl(y) + r * sinl(y) * I;
 	return w;
 }
+#endif

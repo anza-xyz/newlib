@@ -37,6 +37,7 @@
 __weak_alias(catanl, _catanl)
 #endif
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex
 catanl(long double complex z)
 {
@@ -74,4 +75,4 @@ ovrf:
 	w = HUGE_VALL + HUGE_VALL * I;
 	return w;
 }
-
+#endif

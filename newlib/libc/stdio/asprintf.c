@@ -17,6 +17,8 @@
 /* This code was copied from sprintf.c */
 /* doc in sprintf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -87,3 +89,5 @@ asiprintf (char **, const char *, ...)
        _ATTRIBUTE ((__alias__("asprintf")));
 #endif
 #endif /* ! _REENT_ONLY */
+
+#endif

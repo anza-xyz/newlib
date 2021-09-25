@@ -15,6 +15,8 @@
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -49,3 +51,4 @@ _fiscanf_r(struct _reent *ptr, FILE *fp, const char *fmt, ...)
   return (ret);
 }
 
+#endif

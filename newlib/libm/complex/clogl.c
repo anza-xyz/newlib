@@ -32,6 +32,7 @@
 #include <complex.h>
 #include <math.h>
 
+#ifdef _LDBL_EQ_DBL
 long double complex
 clogl(long double complex z)
 {
@@ -44,3 +45,4 @@ clogl(long double complex z)
 	w = p + rr * I;
 	return w;
 }
+#endif

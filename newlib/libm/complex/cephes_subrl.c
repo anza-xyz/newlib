@@ -35,6 +35,7 @@
 
 /* calculate cosh and sinh */
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 void
 _cchshl(long double x, long double *c, long double *s)
 {
@@ -51,6 +52,7 @@ _cchshl(long double x, long double *c, long double *s)
 		*c = e + ei;
 	}
 }
+#endif
 
 /* Program to subtract nearest integer multiple of PI */
 
@@ -65,6 +67,7 @@ static const long double DP3 = 0L;
 #define MACHEPL 1.1e-19L
 #endif
 
+#if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double
 _redupil(long double x)
 {
@@ -126,3 +129,4 @@ _ctansl(long double complex z)
 	} while (fabsl(t/d) > MACHEPL);
 	return d;
 }
+#endif

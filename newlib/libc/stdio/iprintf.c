@@ -16,6 +16,8 @@
  */
 /* doc in siprintf.c */
 
+#ifndef __bpf__
+
 #include <_ansi.h>
 #include <reent.h>
 #include <stdio.h>
@@ -53,3 +55,5 @@ _iprintf_r (struct _reent *ptr,
   va_end (ap);
   return ret;
 }
+
+#endif
