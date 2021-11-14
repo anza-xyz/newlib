@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -25,7 +25,7 @@ SYNOPSIS
 	float expf(float <[x]>);
 
 DESCRIPTION
-	<<exp>> and <<expf>> calculate the exponential of <[x]>, that is, 
+	<<exp>> and <<expf>> calculate the exponential of <[x]>, that is,
 	@ifnottex
 	e raised to the power <[x]> (where e
 	@end ifnottex
@@ -45,7 +45,7 @@ PORTABILITY
 
 */
 
-/* 
+/*
  * wrapper exp(x)
  */
 
@@ -79,14 +79,18 @@ u_threshold= -7.45133219101941108420e+02;  /* 0xc0874910, 0xD52D3051 */
 	if(finite(x)) {
 	    if(x>o_threshold) {
 		/* exp(finite) overflow */
+#ifndef _REENT_ONLY
 		errno = ERANGE;
+#endif /* _REENT_ONLY */
 		return HUGE_VAL;
 	    } else if(x<u_threshold) {
 		/* exp(finite) underflow */
+#ifndef _REENT_ONLY
 		errno = ERANGE;
+#endif /* _REENT_ONLY */
 		return 0.0;
-	    } 
-	} 
+	    }
+	}
 	return z;
 #endif
 }

@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -68,7 +68,9 @@ PORTABILITY
 	if(_LIB_VERSION == _IEEE_) return z;
 	if((!finite(z))&&finite(x)&&finite(y)) {
 	    /* hypot(finite,finite) overflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return HUGE_VAL;
 	} else
 	    return z;

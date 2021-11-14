@@ -8,13 +8,13 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  *
  */
 
-/* 
+/*
  * wrapper acoshf(x)
  */
 
@@ -36,7 +36,9 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
 	if(x<1.0f) {
 	    /* acoshf(x<1) */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
 	    return 0.0f/0.0f;
 	} else
 	    return z;

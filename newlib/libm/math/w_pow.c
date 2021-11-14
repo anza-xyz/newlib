@@ -7,7 +7,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -45,7 +45,7 @@ RETURNS
 PORTABILITY
 	<<pow>> is ANSI C. <<powf>> is an extension.  */
 
-/* 
+/*
  * wrapper pow(x,y) return x**y
  */
 
@@ -68,7 +68,7 @@ PORTABILITY
 	double z;
 	z=__ieee754_pow(x,y);
 	if(_LIB_VERSION == _IEEE_|| isnan(y)) return z;
-	if(x==0.0){ 
+	if(x==0.0){
 	    if(y==0.0) {
 		/* pow(0.0,0.0) */
 		/* Not an error.  */
@@ -76,7 +76,9 @@ PORTABILITY
 	    }
 	    if(finite(y)&&y<0.0) {
 		/* 0**neg */
+#ifndef _REENT_ONLY
 		errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    }
 	    return z;
 	}
@@ -84,34 +86,27 @@ PORTABILITY
 	    if(finite(x)&&finite(y)) {
 	        if(isnan(z)) {
 		    /* neg**non-integral */
+#ifndef _REENT_ONLY
 		    errno = EDOM;
+#endif /* _REENT_ONLY */
 	        } else {
 		    /* pow(x,y) overflow */
+#ifndef _REENT_ONLY
 		    errno = ERANGE;
+#endif /* _REENT_ONLY */
                 }
 		return z;
 	    }
-	} 
+	}
 	if(z==0.0&&finite(x)&&finite(y)) {
 	    /* pow(x,y) underflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
-        } 
+#endif /* _REENT_ONLY */
+        }
 	return z;
 #endif
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */
 #endif /* __OBSOLETE_MATH */
-
-
-
-
-
-
-
-
-
-
-
-
-

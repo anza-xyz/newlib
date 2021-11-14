@@ -166,7 +166,7 @@ __fgetwc (struct _reent *ptr,
     }
   while (__srefill_r(ptr, fp) == 0);
   fp->_flags |= __SERR;
-  errno = EILSEQ;
+  ptr->_errno = EILSEQ;
   return (WEOF);
 }
 

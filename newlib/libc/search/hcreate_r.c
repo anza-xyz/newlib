@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2001 Christopher G. Demetriou
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -14,7 +14,7 @@
  *    documentation and/or other materials provided with the distribution.
  * 3. The name of the author may not be used to endorse or promote products
  *    derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
@@ -25,7 +25,7 @@
  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * <<Id: LICENSE_GC,v 1.1 2001/10/01 23:24:05 cgd Exp>>
  */
 
@@ -40,6 +40,7 @@
  * I tried to look at Knuth (as cited by the Solaris manual page), but
  * nobody had a copy in the office, so...
  */
+#ifndef _SOLANA_SOURCE
 
 #include <sys/cdefs.h>
 #if 0
@@ -109,7 +110,7 @@ hcreate_r(size_t nel, struct hsearch_data *htab)
 			nel >>= 1;
 		nel = 1 << p2;
 	}
-	
+
 	/* Allocate the table. */
 	htab->htablesize = nel;
 	htab->htable = malloc(htab->htablesize * sizeof htab->htable[0]);
@@ -192,3 +193,5 @@ hsearch_r(ENTRY item, ACTION action, ENTRY **retval, struct hsearch_data *htab)
         *retval = &ie->ent;
 	return 1;
 }
+
+#endif /* _SOLANA_SOURCE */

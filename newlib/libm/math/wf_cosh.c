@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper coshf(x)
  */
 
@@ -35,7 +35,9 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
 	if(fabsf(x)>8.9415985107e+01f) {
 	    /* coshf(finite) overflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return HUGE_VALF;
 	} else
 	    return z;

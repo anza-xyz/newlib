@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper fmodf(x,y)
  */
 
@@ -35,7 +35,9 @@
 	if(_LIB_VERSION == _IEEE_ ||isnan(y)||isnan(x)) return z;
 	if(y==0.0f) {
             /* fmodf(x,0) */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
 	    return  0.0f/0.0f;
 	} else
 	    return z;

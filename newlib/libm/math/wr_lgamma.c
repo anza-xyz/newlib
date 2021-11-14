@@ -6,12 +6,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper double lgamma_r(double x, int *signgamp)
  */
 
@@ -34,12 +34,17 @@
         y = __ieee754_lgamma_r(x,signgamp);
         if(_LIB_VERSION == _IEEE_) return y;
         if(!finite(y)&&finite(x)) {
-	    if(floor(x)==x&&x<=0.0)
+	    if(floor(x)==x&&x<=0.0) {
 	      /* lgamma(-integer) */
+#ifndef _REENT_ONLY
 	      errno = EDOM;
-	    else
+#endif /* _REENT_ONLY */
+	    } else {
 	      /* lgamma(finite) overflow */
+#ifndef _REENT_ONLY
 	      errno = ERANGE;
+#endif /* _REENT_ONLY */
+            }
         }
 	return y;
 #endif

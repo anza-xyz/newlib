@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -28,7 +28,7 @@ SYNOPSIS
 
 DESCRIPTION
 	<<sinh>> computes the hyperbolic sine of the argument <[x]>.
-	Angles are specified in radians.   <<sinh>>(<[x]>) is defined as 
+	Angles are specified in radians.   <<sinh>>(<[x]>) is defined as
 	@ifnottex
 	. (exp(<[x]>) - exp(-<[x]>))/2
 	@end ifnottex
@@ -39,15 +39,15 @@ DESCRIPTION
 	<<sinhf>> is identical, save that it takes and returns <<float>> values.
 
 RETURNS
-	The hyperbolic sine of <[x]> is returned.  
+	The hyperbolic sine of <[x]> is returned.
 
 	When the correct result is too large to be representable (an
 	overflow),  <<sinh>> returns <<HUGE_VAL>> with the
 	appropriate sign, and sets the global value <<errno>> to
-	<<ERANGE>>. 
+	<<ERANGE>>.
 
 PORTABILITY
-	<<sinh>> is ANSI C.  
+	<<sinh>> is ANSI C.
 	<<sinhf>> is an extension.
 
 QUICKREF
@@ -55,7 +55,7 @@ QUICKREF
 	sinhf - pure
 */
 
-/* 
+/*
  * wrapper sinh(x)
  */
 
@@ -74,12 +74,14 @@ QUICKREF
 #ifdef _IEEE_LIBM
 	return __ieee754_sinh(x);
 #else
-	double z; 
+	double z;
 	z = __ieee754_sinh(x);
 	if(_LIB_VERSION == _IEEE_) return z;
 	if(!finite(z)&&finite(x)) {
 	    /* sinh(finite) overflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return ((x>0.0) ? HUGE_VAL : -HUGE_VAL);
 	} else
 	    return z;

@@ -6,14 +6,14 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
 /*
 FUNCTION
-<<jN>>, <<jNf>>, <<yN>>, <<yNf>>---Bessel functions 
+<<jN>>, <<jNf>>, <<yN>>, <<yNf>>---Bessel functions
 
 INDEX
 j0
@@ -57,7 +57,7 @@ float ynf(int <[n]>, float <[x]>);
 
 DESCRIPTION
 The Bessel functions are a family of functions that solve the
-differential equation 
+differential equation
 @ifnottex
 .  2               2    2
 . x  y'' + xy' + (x  - p )y  = 0
@@ -108,7 +108,9 @@ None of the Bessel functions are in ANSI C.
 	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
 	if(fabs(x)>X_TLOSS) {
 	    /* j0(|x|>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return 0.0;
 	} else
 	    return z;
@@ -130,25 +132,24 @@ None of the Bessel functions are in ANSI C.
 	if(_LIB_VERSION == _IEEE_ || isnan(x) ) return z;
         if(x < 0.0){
 	    /* y0(x<0) = NaN */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
         }
         if(x == 0.0){
 	    /* y0(0) = -inf */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
         }
 	if(x>X_TLOSS) {
 	    /* y0(x>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	}
 	return z;
 #endif
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */
-
-
-
-
-
-
-

@@ -8,7 +8,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -34,7 +34,9 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
 	if(fabsf(x)>(float)X_TLOSS) {
 	    /* j0f(|x|>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	}
 	return z;
 #endif
@@ -55,15 +57,21 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x) ) return z;
         if(x < 0.0f){
 	    /* y0f(x<0) = NaN */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
         }
 	if (x == 0.0f){
 	    /* y0f(n,0) = -inf */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	}
 	if(x>(float)X_TLOSS) {
 	    /* y0f(x>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	}
 	return z;
 #endif

@@ -35,7 +35,9 @@
 NOINLINE static double
 with_errno (double y, int e)
 {
+#ifndef _REENT_ONLY
   errno = e;
+#endif /* _REENT_ONLY */
   return y;
 }
 #else

@@ -8,14 +8,14 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
 /*
  * wrapper scalbf(float x, float fn) is provide for
- * passing various standard test suite. One 
+ * passing various standard test suite. One
  * should use scalbn() instead.
  */
 
@@ -45,19 +45,27 @@
 	if(_LIB_VERSION == _IEEE_) return z;
 	if(!(finitef(z)||isnan(z))&&finitef(x)) {
 	    /* scalbf overflow; */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return (x > 0.0 ? HUGE_VALF : -HUGE_VALF);
 	}
 	if(z==0.0f&&z!=x) {
 	    /* scalbf underflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return copysign(0.0,x);
-	} 
+	}
 #ifndef _SCALB_INT
-	if(!finitef(fn)) errno = ERANGE;
+	if(!finitef(fn)) {
+#ifndef _REENT_ONLY
+          errno = ERANGE;
+#endif /* _REENT_ONLY */
+        }
 #endif
 	return z;
-#endif 
+#endif
 }
 
 #ifdef _DOUBLE_IS_32BITS
@@ -65,7 +73,7 @@
 #ifdef __STDC__
 #ifdef _SCALB_INT
 	double scalb(double x, int fn)
-#else 
+#else
 	double scalb(double x, double fn)
 #endif
 #else

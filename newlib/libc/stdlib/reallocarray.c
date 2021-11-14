@@ -21,6 +21,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#if __BSD_VISIBLE
 void *
 reallocarray(void *optr, size_t nmemb, size_t size)
 {
@@ -33,3 +34,4 @@ reallocarray(void *optr, size_t nmemb, size_t size)
 	}
 	return realloc(optr, bytes);
 }
+#endif

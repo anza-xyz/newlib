@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -24,7 +24,7 @@ SYNOPSIS
 DESCRIPTION
 
 	<<cosh>> computes the hyperbolic cosine of the argument <[x]>.
-	<<cosh(<[x]>)>> is defined as 
+	<<cosh(<[x]>)>> is defined as
 	@ifnottex
 	. (exp(x) + exp(-x))/2
 	@end ifnottex
@@ -32,8 +32,8 @@ DESCRIPTION
 	$${(e^x + e^{-x})} \over 2$$
 	@end tex
 
-	Angles are specified in radians.  
-		
+	Angles are specified in radians.
+
 	<<coshf>> is identical, save that it takes and returns <<float>>.
 
 RETURNS
@@ -42,7 +42,7 @@ RETURNS
 	appropriate sign, and the global value <<errno>> is set to <<ERANGE>>.
 
 PORTABILITY
-	<<cosh>> is ANSI.  
+	<<cosh>> is ANSI.
 	<<coshf>> is an extension.
 
 QUICKREF
@@ -50,7 +50,7 @@ QUICKREF
 	coshf - pure
 */
 
-/* 
+/*
  * wrapper cosh(x)
  */
 
@@ -58,7 +58,7 @@ QUICKREF
 #include <errno.h>
 
 #ifndef _DOUBLE_IS_32BITS
- 
+
 #ifdef __STDC__
 	double cosh(double x)		/* wrapper cosh */
 #else
@@ -72,9 +72,11 @@ QUICKREF
 	double z;
 	z = __ieee754_cosh(x);
 	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
-	if(fabs(x)>7.10475860073943863426e+02) {	
+	if(fabs(x)>7.10475860073943863426e+02) {
 	    /* cosh(finite) overflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return HUGE_VAL;
 	} else
 	    return z;

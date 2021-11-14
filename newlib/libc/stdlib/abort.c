@@ -46,6 +46,8 @@ Supporting OS subroutines required: <<_exit>> and optionally, <<write>>.
 #include <unistd.h>
 #include <signal.h>
 
+#ifndef _REENT_ONLY
+
 void
 abort (void)
 {
@@ -59,5 +61,7 @@ abort (void)
       _exit (1);
     }
 }
+
+#endif /* _REENT_ONLY */
 
 #endif

@@ -31,10 +31,15 @@
 #else
 	if(_LIB_VERSION == _IEEE_) return y;
 
-	if(x < 0.0 && floor(x)==x)
+	if(x < 0.0 && floor(x)==x) {
+#ifndef _REENT_ONLY
 	    errno = EDOM;
-	  else if (finite(x))
+#endif /* _REENT_ONLY */
+	} else if (finite(x)) {
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
+	}
 	return y;
 #endif
 }

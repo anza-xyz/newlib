@@ -6,13 +6,13 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
- * wrapper of j1,y1 
+/*
+ * wrapper of j1,y1
  */
 
 #include "fdlibm.h"
@@ -35,7 +35,9 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x) ) return z;
 	if(fabs(x)>X_TLOSS) {
 	    /* j1(|x|>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return 0.0;
 	} else
 	    return z;
@@ -57,23 +59,24 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x) ) return z;
         if(x < 0.0){
 	    /* y1(x<0) = NaN */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
         }
         if(x == 0.0){
 	    /* y1(0) = -inf */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
         }
 	if(x>X_TLOSS) {
 	    /* y1(x>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	}
 	return z;
 #endif
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */
-
-
-
-
-

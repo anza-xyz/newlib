@@ -1,18 +1,18 @@
 /*
  * Copyright (c) 1999 Kungliga Tekniska Högskolan
- * (Royal Institute of Technology, Stockholm, Sweden). 
- * All rights reserved. 
+ * (Royal Institute of Technology, Stockholm, Sweden).
+ * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions 
- * are met: 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
  *
- * 1. Redistributions of source code must retain the above copyright 
- *    notice, this list of conditions and the following disclaimer. 
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
  *
- * 2. Redistributions in binary form must reproduce the above copyright 
- *    notice, this list of conditions and the following disclaimer in the 
- *    documentation and/or other materials provided with the distribution. 
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
  *
  * 3. Neither the name of KTH nor the names of its contributors may be
  *    used to endorse or promote products derived from this software without
@@ -29,6 +29,7 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
+#ifndef _SOLANA_SOURCE
 
 #define _GNU_SOURCE
 #include <stddef.h>
@@ -56,7 +57,7 @@ static const int _DAYS_BEFORE_MONTH[12] =
 #define SET_YMD  (SET_YEAR | SET_MON | SET_MDAY)
 
 /*
- * tm_year is relative this year 
+ * tm_year is relative this year
  */
 const int tm_year_base = 1900;
 
@@ -507,3 +508,5 @@ strptime (const char *buf, const char *format, struct tm *timeptr)
 {
   return strptime_l (buf, format, timeptr, __get_current_locale ());
 }
+
+#endif /* _SOLANA_SOURCE */

@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper powf(x,y) return x**y
  */
 
@@ -42,7 +42,9 @@
 	    }
 	    if(finitef(y)&&y<0.0f) {
 		/* 0**neg */
+#ifndef _REENT_ONLY
 		errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    }
 	    return z;
 	}
@@ -50,19 +52,25 @@
 	    if(finitef(x)&&finitef(y)) {
 		if(isnan(z)) {
 		    /* neg**non-integral */
+#ifndef _REENT_ONLY
 		    errno = EDOM;
+#endif /* _REENT_ONLY */
 		    /* Use a float divide, to avoid a soft-float double
 		       divide call on single-float only targets.  */
 		} else {
 		    /* powf(x,y) overflow */
+#ifndef _REENT_ONLY
 		    errno = ERANGE;
+#endif /* _REENT_ONLY */
 		}
 		return z;
 	    }
-	} 
+	}
 	if(z==0.0f&&finitef(x)&&finitef(y)) {
 	    /* powf(x,y) underflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
         }
 	return z;
 #endif

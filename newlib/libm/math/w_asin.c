@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  *
@@ -51,18 +51,18 @@ QUICKREF
  asin	 y,y,m
  asinf   n,n,m
 
-MATHREF  
+MATHREF
  asin,  -1<=arg<=1, asin(arg),,,
  asin,  NAN,  arg,EDOM, DOMAIN
 
-MATHREF  
+MATHREF
  asinf,  -1<=arg<=1, asin(arg),,,
- asinf,  NAN,  arg,EDOM, DOMAIN 
+ asinf,  NAN,  arg,EDOM, DOMAIN
 
 
 */
 
-/* 
+/*
  * wrapper asin(x)
  */
 
@@ -87,7 +87,9 @@ MATHREF
 	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
 	if(fabs(x)>1.0) {
 	    /* asin(|x|>1) */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
 	    return nan("");
 	} else
 	    return z;

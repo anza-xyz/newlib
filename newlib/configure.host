@@ -328,7 +328,7 @@ case "${host_cpu}" in
 	;;
   sbf*)
 	machine_dir=sbf
-	newlib_cflags="${newlib_cflags} -D_LDBL_EQ_DBL=1 -D__GLIBC_USE\(...\)=0 --target=bpfel-unknown-unknown -Xclang -target-feature -Xclang +solana"
+	newlib_cflags="${newlib_cflags} -D_LDBL_EQ_DBL=1 -D__GLIBC_USE\(...\)=0 -D_SOLANA_SOURCE --target=bpfel-unknown-unknown -Xclang -target-feature -Xclang +solana"
 	;;
   sh | sh64)
 	machine_dir=sh

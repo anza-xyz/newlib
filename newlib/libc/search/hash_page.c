@@ -29,6 +29,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
+#ifndef _SOLANA_SOURCE
 
 #include <sys/param.h>
 #if defined(LIBC_SCCS) && !defined(lint)
@@ -942,3 +943,5 @@ print_chain(addr)
 	(void)fprintf(stderr, "\n");
 }
 #endif
+
+#endif /* _REENT_ONLY */

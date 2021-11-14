@@ -6,14 +6,14 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
 /*
  * wrapper scalb(double x, double fn) is provide for
- * passing various standard test suite. One 
+ * passing various standard test suite. One
  * should use scalbn() instead.
  */
 
@@ -45,19 +45,27 @@
 	if(_LIB_VERSION == _IEEE_) return z;
 	if(!(finite(z)||isnan(z))&&finite(x)) {
 	    /* scalb overflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return (x > 0.0 ? HUGE_VAL : -HUGE_VAL);
 	}
 	if(z==0.0&&z!=x) {
 	    /* scalb underflow */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return copysign(0.0,x);
-	} 
+	}
 #ifndef _SCALB_INT
-	if(!finite(fn)) errno = ERANGE;
+	if(!finite(fn)) {
+#ifndef _REENT_ONLY
+	    errno = ERANGE;
+#endif /* _REENT_ONLY */
+	}
 #endif
 	return z;
-#endif 
+#endif
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

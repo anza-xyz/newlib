@@ -590,7 +590,7 @@ extern int *__signgam (void);
 
 /* Useful constants.  */
 
-#if __BSD_VISIBLE || __XSI_VISIBLE
+#if __BSD_VISIBLE || __XSI_VISIBLE || _SOLANA_SOURCE
 
 #define MAXFLOAT	3.40282347e+38F
 
@@ -610,7 +610,7 @@ extern int *__signgam (void);
 
 #endif
 
-#if __BSD_VISIBLE
+#if __BSD_VISIBLE || _SOLANA_SOURCE
 
 #define M_TWOPI         (M_PI * 2.0)
 #define M_3PI_4		2.3561944901923448370E0

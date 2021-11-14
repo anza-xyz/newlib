@@ -137,7 +137,7 @@ _strtol_l (struct _reent *rptr, const char *__restrict nptr,
 	register int neg = 0, any, cutlim;
 
 	if (base < 0 || base == 1 || base > 36) {
-		errno = EINVAL;
+		rptr->_errno = EINVAL;
 		return 0;
 	}
 

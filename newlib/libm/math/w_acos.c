@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -28,7 +28,7 @@ SYNOPSIS
 DESCRIPTION
 
 	<<acos>> computes the inverse cosine (arc cosine) of the input value.
-	Arguments to <<acos>> must be in the range @minus{}1 to 1. 
+	Arguments to <<acos>> must be in the range @minus{}1 to 1.
 
 	<<acosf>> is identical to <<acos>>, except that it performs
 	its calculations on <<floats>>.
@@ -49,14 +49,14 @@ QUICKREF
  acos	 y,y,m
  acosf   n,n,m
 
-MATHREF  
+MATHREF
  acos, [-1,1], acos(arg),,,
  acos, NAN,    arg,DOMAIN,EDOM
 
 MATHREF
  acosf, [-1,1], acosf(arg),,,
  acosf, NAN,    argf,DOMAIN,EDOM
- 
+
 */
 
 /*
@@ -79,11 +79,13 @@ MATHREF
 	return __ieee754_acos(x);
 #else
 	double z;
-       	z = __ieee754_acos(x);
+	z = __ieee754_acos(x);
 	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
-	if(fabs(x)>1.0) { 
+	if(fabs(x)>1.0) {
 	    /* acos(|x|>1) */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
 	    return nan("");
 	} else
 	    return z;

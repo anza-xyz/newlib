@@ -59,7 +59,7 @@ _setenv_r (struct _reent *reent_ptr,
 
   if (strchr(name, '='))
     {
-      errno = EINVAL;
+      reent_ptr->_errno = EINVAL;
       return -1;
     }
 
@@ -75,7 +75,8 @@ _setenv_r (struct _reent *reent_ptr,
         }
       if (strlen (C) >= l_value)
 	{			/* old larger; copy over */
-	  while ((*C++ = *value++) != 0);
+	  while ((*C++ = *value++) != 0)
+            ;
           ENV_UNLOCK;
 	  return 0;
 	}
@@ -136,18 +137,18 @@ _unsetenv_r (struct _reent *reent_ptr,
 {
   register char **P;
   int offset;
- 
-  /* Name cannot be NULL, empty, or contain an equal sign.  */ 
+
+  /* Name cannot be NULL, empty, or contain an equal sign.  */
   if (name == NULL || name[0] == '\0' || strchr(name, '='))
     {
-      errno = EINVAL;
+      reent_ptr->_errno = EINVAL;
       return -1;
     }
 
   ENV_LOCK;
 
   while (_findenv_r (reent_ptr, name, &offset))	/* if set multiple times */
-    { 
+    {
       for (P = &(*p_environ)[offset];; ++P)
         if (!(*P = *(P + 1)))
 	  break;

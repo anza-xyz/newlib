@@ -114,7 +114,7 @@ _fgetws_r (struct _reent *ptr,
 
   if (n <= 0)
     {
-      errno = EINVAL;
+      ptr->_errno = EINVAL;
       goto error;
     }
 

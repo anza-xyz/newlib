@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper float lgammaf_r(float x, int *signgamp)
  */
 
@@ -36,10 +36,14 @@
         if(!finitef(y)&&finitef(x)) {
 	    if(floorf(x)==x&&x<=0.0f) {
 		/* lgammaf(-integer) or lgamma(0) */
+#ifndef _REENT_ONLY
 		errno = EDOM;
+#endif /* _REENT_ONLY */
 	    } else {
 		/* lgammaf(finite) overflow */
+#ifndef _REENT_ONLY
 		errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    }
         }
 	return y;

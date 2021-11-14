@@ -29,6 +29,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
+#ifndef _SOLANA_SOURCE
 
 #include <sys/param.h>
 #if defined(LIBC_SCCS) && !defined(lint)
@@ -664,3 +665,5 @@ __big_split(hashp, op, np, big_keyp, addr, obucket, ret)
 		ret->oldp = tmpp;
 	return (0);
 }
+
+#endif /* _REENT_ONLY */

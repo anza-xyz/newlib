@@ -6,11 +6,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  *
  */
+#ifndef _SOLANA_SOURCE
 
 #include "fdlibm.h"
 #include <errno.h>
@@ -30,7 +31,7 @@ static const double zero = 0.0;	/* used as const */
 static double zero = 0.0;	/* used as const */
 #endif
 
-/* 
+/*
  * POSIX Standard conformance on exception cases.
  * Mapping:
  *	1 -- acos(|x|>1)
@@ -55,7 +56,7 @@ static double zero = 0.0;	/* used as const */
  *	20-- pow(0.0,0.0)
  *	21-- pow(x,y) overflow
  *	22-- pow(x,y) underflow
- *	23-- pow(0,negative) 
+ *	23-- pow(0,negative)
  *	24-- pow(neg,non-integral)
  *	25-- sinh(finite) overflow
  *	26-- sqrt(negative)
@@ -79,16 +80,16 @@ static double zero = 0.0;	/* used as const */
 
 
 #ifdef __STDC__
-	double __kernel_standard(double x, double y, int type) 
+	double __kernel_standard(double x, double y, int type)
 #else
-	double __kernel_standard(x,y,type) 
+	double __kernel_standard(x,y,type)
 	double x,y; int type;
 #endif
 {
 	double retval = 0.0;
 
 #ifdef _USE_WRITE
-        /* (void) fflush(_stdout_r(p)); */        
+        /* (void) fflush(_stdout_r(p)); */
 #endif
 	switch(type) {
 	    case 1:
@@ -350,4 +351,4 @@ static double zero = 0.0;	/* used as const */
 	return retval;
 }
 
-
+#endif /* _SOLANA_SOURCE */

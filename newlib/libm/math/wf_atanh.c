@@ -8,11 +8,11 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
-/* 
+/*
  * wrapper atanhf(x)
  */
 
@@ -36,11 +36,15 @@
 	if(y>=1.0f) {
 	    if(y>1.0f) {
 		/* atanhf(|x|>1) */
+#ifndef _REENT_ONLY
 		errno = EDOM;
+#endif /* _REENT_ONLY */
 		return 0.0f/0.0f;
-	    } else { 
+	    } else {
 		/* atanhf(|x|=1) */
+#ifndef _REENT_ONLY
 		errno = EDOM;
+#endif /* _REENT_ONLY */
 		return x/0.0f;	/* sign(x)*inf */
 	    }
 	} else

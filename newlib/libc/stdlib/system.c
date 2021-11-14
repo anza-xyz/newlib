@@ -66,7 +66,7 @@ _system_r (struct _reent *ptr,
 #elif defined(NO_EXEC)
   if (s == NULL)
     return 0;
-  errno = ENOSYS;
+  ptr->_errno = ENOSYS;
   return -1;
 #else
 
@@ -82,7 +82,7 @@ _system_r (struct _reent *ptr,
 #else
   if (s == NULL)
     return 0;
-  errno = ENOSYS;
+  ptr->_errno = ENOSYS;
   return -1;
 #endif
 

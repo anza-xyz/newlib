@@ -31,6 +31,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
+#ifndef _SOLANA_SOURCE
 
 #if defined(LIBC_SCCS) && !defined(lint)
 static char sccsid[] = "@(#)ndbm.c	8.4 (Berkeley) 7/21/94";
@@ -215,3 +216,5 @@ dbm_dirfno(DBM *db)
 {
 	return(((HTAB *)db->internal)->fp);
 }
+
+#endif /* _SOLANA_SOURCE */

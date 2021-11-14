@@ -6,14 +6,14 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
 /*
 FUNCTION
-	<<atanh>>, <<atanhf>>---inverse hyperbolic tangent 
+	<<atanh>>, <<atanhf>>---inverse hyperbolic tangent
 
 INDEX
 	atanh
@@ -34,7 +34,7 @@ DESCRIPTION
 RETURNS
 	<<atanh>> and <<atanhf>> return the calculated value.
 
-	If 
+	If
 	@ifnottex
 	|<[x]>|
 	@end ifnottex
@@ -44,14 +44,14 @@ RETURNS
 	is greater than 1, the global <<errno>> is set to <<EDOM>> and
 	the result is a NaN.  A <<DOMAIN error>> is reported.
 
-	If 
+	If
 	@ifnottex
 	|<[x]>|
 	@end ifnottex
 	@tex
 	$|x|$
 	@end tex
-	is 1, the global <<errno>> is set to <<EDOM>>; and the result is 
+	is 1, the global <<errno>> is set to <<EDOM>>; and the result is
 	infinity with the same sign as <<x>>.  A <<SING error>> is reported.
 
 PORTABILITY
@@ -64,7 +64,7 @@ QUICKREF
 
 */
 
-/* 
+/*
  * wrapper atanh(x)
  */
 
@@ -90,11 +90,15 @@ QUICKREF
 	if(y>=1.0) {
 	    if(y>1.0) {
 		/* atanh(|x|>1) */
+#ifndef _REENT_ONLY
 		errno = EDOM;
+#endif /* _REENT_ONLY */
 		return 0.0/0.0;
-	    } else { 
+	    } else {
 		/* atanh(|x|=1) */
+#ifndef _REENT_ONLY
 		errno = EDOM;
+#endif /* _REENT_ONLY */
 		return x/0.0;	/* sign(x)*inf */
 	    }
 	} else
@@ -103,7 +107,3 @@ QUICKREF
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */
-
-
-
-

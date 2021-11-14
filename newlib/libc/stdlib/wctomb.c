@@ -10,10 +10,10 @@ SYNOPSIS
 	int wctomb(char *<[s]>, wchar_t <[wchar]>);
 
 DESCRIPTION
-When _MB_CAPABLE is not defined, this is a minimal ANSI-conforming 
+When _MB_CAPABLE is not defined, this is a minimal ANSI-conforming
 implementation of <<wctomb>>.  The
 only ``wide characters'' recognized are single bytes,
-and they are ``converted'' to themselves.  
+and they are ``converted'' to themselves.
 
 When _MB_CAPABLE is defined, this routine calls <<_wctomb_r>> to perform
 the conversion, passing a state variable to allow state dependent
@@ -38,11 +38,12 @@ effects vary with the locale.
 <<wctomb>> requires no supporting OS subroutines.
 */
 
-#ifndef _REENT_ONLY
-
 #include <newlib.h>
 #include <stdlib.h>
 #include <errno.h>
+
+#ifndef _REENT_ONLY
+
 #include "local.h"
 
 int

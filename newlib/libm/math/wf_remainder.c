@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper remainderf(x,p)
  */
 
@@ -35,7 +35,9 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(y)) return z;
 	if(y==0.0f) {
 	    /* remainderf(x,0) */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
 	    return 0.0f/0.0f;
 	} else
 	    return z;
@@ -55,7 +57,3 @@
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */
-
-
-
-

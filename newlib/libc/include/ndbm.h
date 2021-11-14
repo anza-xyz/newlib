@@ -48,7 +48,9 @@
  * directory and not in `newlib/libc/include`.
  * Necessary data-types are mentioned in form of forward-declarations
  */
-   
+
+#ifndef _SOLANA_SOURCE
+
 /* Map dbm interface onto db(3). */
 #define DBM_RDONLY	O_RDONLY
 
@@ -86,5 +88,7 @@ int	 dbm_store(DBM *, datum, datum, int);
 int	 dbm_dirfno(DBM *);
 #endif
 __END_DECLS
+
+#endif /* _SOLANA_SOURCE */
 
 #endif /* !_NDBM_H_ */

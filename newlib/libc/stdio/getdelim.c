@@ -54,12 +54,14 @@ __getdelim (char **bufptr,
 
   if (fp == NULL || bufptr == NULL || n == NULL)
     {
+#ifndef _REENT_ONLY
       errno = EINVAL;
+#endif /* _REENT_ONLY */
       return -1;
     }
 
   buf = *bufptr;
-  if (buf == NULL || *n < MIN_LINE_SIZE) 
+  if (buf == NULL || *n < MIN_LINE_SIZE)
     {
       buf = (char *)realloc (*bufptr, DEFAULT_LINE_SIZE);
       if (buf == NULL)
@@ -89,7 +91,7 @@ __getdelim (char **bufptr,
 	      cont = 0;
               break;
             }
-	  else 
+	  else
             {
               *ptr++ = ch;
               if (ch == delim)
@@ -112,7 +114,7 @@ __getdelim (char **bufptr,
               break;
             }
 
-          /* After reallocating, continue in new buffer */          
+          /* After reallocating, continue in new buffer */
           *bufptr = buf;
           *n = newsize;
           ptr = buf + pos;
@@ -130,4 +132,3 @@ __getdelim (char **bufptr,
   *ptr = '\0';
   return (ssize_t)(ptr - buf);
 }
-

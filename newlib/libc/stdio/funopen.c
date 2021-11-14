@@ -79,6 +79,7 @@ It is not portable.  See also the <<fopencookie>> interface from Linux.
 
 Supporting OS subroutines required: <<sbrk>>.
 */
+#ifndef _SOLANA_SOURCE
 
 #include <stdio.h>
 #include <errno.h>
@@ -270,3 +271,5 @@ funopen (const void *cookie,
   return _funopen_r (_REENT, cookie, readfn, writefn, seekfn, closefn);
 }
 #endif /* !_REENT_ONLY */
+
+#endif /* _SOLANA_SOURCE */

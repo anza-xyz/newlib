@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper expf(x)
  */
 
@@ -45,14 +45,18 @@ u_threshold= -1.0397208405e+02;  /* 0xc2cff1b5 */
 	if(finitef(x)) {
 	    if(x>o_threshold) {
 		/* expf(finite) overflow */
+#ifndef _REENT_ONLY
 		errno = ERANGE;
+#endif /* _REENT_ONLY */
 	        return HUGE_VALF;
 	    } else if(x<u_threshold) {
 		/* expf(finite) underflow */
+#ifndef _REENT_ONLY
 		errno = ERANGE;
+#endif /* _REENT_ONLY */
 		return 0.0f;
-	    } 
-	} 
+	    }
+	}
 	return z;
 #endif
 }

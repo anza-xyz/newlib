@@ -36,7 +36,9 @@
 NOINLINE static float
 with_errnof (float y, int e)
 {
+#ifndef _REENT_ONLY
   errno = e;
+#endif /* _REENT_ONLY */
   return y;
 }
 #else

@@ -10,6 +10,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#if __BSD_VISIBLE
+
 error_t
 argz_create_sep (const char *string,
        int sep,
@@ -66,3 +68,5 @@ argz_create_sep (const char *string,
   free(old_running);
   return 0;
 }
+
+#endif /* __BSD_VISIBLE */

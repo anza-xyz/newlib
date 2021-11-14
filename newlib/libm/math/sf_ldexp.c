@@ -8,7 +8,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -25,7 +25,11 @@
 {
 	if(!finitef(value)||value==(float)0.0) return value;
 	value = scalbnf(value,exp);
-	if(!finitef(value)||value==(float)0.0) errno = ERANGE;
+	if(!finitef(value)||value==(float)0.0) {
+#ifndef _REENT_ONLY
+          errno = ERANGE;
+#endif /* _REENT_ONLY */
+        }
 	return value;
 }
 

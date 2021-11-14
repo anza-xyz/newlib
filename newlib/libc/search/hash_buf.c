@@ -29,6 +29,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
+#ifndef _SOLANA_SOURCE
 
 #include <sys/param.h>
 #if defined(LIBC_SCCS) && !defined(lint)
@@ -358,3 +359,5 @@ __reclaim_buf(hashp, bp)
 	BUF_REMOVE(bp);
 	LRU_INSERT(bp);
 }
+
+#endif /* _SOLANA_SOURCE */

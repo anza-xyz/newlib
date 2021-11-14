@@ -261,6 +261,13 @@ extern "C" {
 #define	__GNU_VISIBLE		0
 #endif
 
+#ifdef _SOLANA_SOURCE
+#undef		__BSD_VISIBLE
+#define	__BSD_VISIBLE		0
+#define	_REENT_ONLY
+#define	NO_ERRNO
+#endif
+
 #if defined(_ISOC11_SOURCE) || \
   (__STDC_VERSION__ - 0) >= 201112L || (__cplusplus - 0) >= 201103L
 #define	__ISO_C_VISIBLE		2011

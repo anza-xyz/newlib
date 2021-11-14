@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -15,7 +15,7 @@
  * wrapper jn(int n, double x), yn(int n, double x)
  * floating point Bessel's function of the 1st and 2nd kind
  * of order n
- *          
+ *
  * Special cases:
  *	y0(0)=y1(0)=yn(n,0) = -inf with division by zero signal;
  *	y0(-ve)=y1(-ve)=yn(n,-ve) are NaN with invalid signal.
@@ -34,7 +34,7 @@
  *	yn(n,x) is similar in all respects, except
  *	that forward recursion is used for all
  *	values of n>1.
- *	
+ *
  */
 
 #include "fdlibm.h"
@@ -57,7 +57,9 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x) ) return z;
 	if(fabs(x)>X_TLOSS) {
 	    /* jn(|x|>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	    return 0.0;
 	} else
 	    return z;
@@ -79,15 +81,21 @@
 	if(_LIB_VERSION == _IEEE_ || isnan(x) ) return z;
         if(x < 0.0){
 	    /* yn(x<0) = NaN */
+#ifndef _REENT_ONLY
 	    errno = EDOM;
+#endif /* _REENT_ONLY */
         }
         if(x == 0.0){
 	    /* yn(0) = -inf */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
         }
 	if(x>X_TLOSS) {
 	    /* yn(x>X_TLOSS) */
+#ifndef _REENT_ONLY
 	    errno = ERANGE;
+#endif /* _REENT_ONLY */
 	}
 	return z;
 #endif

@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -26,7 +26,7 @@ SYNOPSIS
        float ldexpf(float <[val]>, int <[exp]>);
 
 DESCRIPTION
-<<ldexp>> calculates the value 
+<<ldexp>> calculates the value
 @ifnottex
 <[val]> times 2 to the power <[exp]>.
 @end ifnottex
@@ -45,8 +45,8 @@ On overflow, <<ldexp>> returns plus or minus <<HUGE_VAL>>.
 
 PORTABILITY
 <<ldexp>> is ANSI. <<ldexpf>> is an extension.
-              
-*/   
+
+*/
 
 #include "fdlibm.h"
 #include <errno.h>
@@ -62,7 +62,11 @@ PORTABILITY
 {
 	if(!finite(value)||value==0.0) return value;
 	value = scalbn(value,exp);
-	if(!finite(value)||value==0.0) errno = ERANGE;
+	if(!finite(value)||value==0.0) {
+#ifndef _REENT_ONLY
+	    errno = ERANGE;
+#endif /* _REENT_ONLY */
+	}
 	return value;
 }
 
