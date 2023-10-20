@@ -33,6 +33,10 @@
 #include <math.h>
 
 #ifdef _LDBL_EQ_DBL
+
+long double atan2l(long double, long double);
+long double logl(long double);
+
 long double complex
 clogl(long double complex z)
 {

@@ -1,11 +1,12 @@
 /*
  * drem() wrapper for remainder().
- * 
+ *
  * Written by J.T. Conklin, <jtc@wimsey.com>
  * Placed into the Public Domain, 1994.
  */
 
 #include "fdlibm.h"
+double remainder(double x, double y);
 
 double
 drem(x, y)

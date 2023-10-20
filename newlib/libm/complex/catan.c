@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * imported and modified include for newlib 2010/10/03 
+ * imported and modified include for newlib 2010/10/03
  * Marco Atzeri <marco_atzeri@yahoo.it>
  */
 
@@ -50,12 +50,12 @@ SYNOPSIS
 DESCRIPTION
         @ifnottex
         These functions compute the complex arc tangent of <[z]>,
-        with branch cuts outside the interval [-i, +i] along the 
+        with branch cuts outside the interval [-i, +i] along the
         imaginary axis.
         @end ifnottex
         @tex
         These functions compute the complex arc tangent of <[z]>,
-        with branch cuts outside the interval [$-i$, $+i$] along the 
+        with branch cuts outside the interval [$-i$, $+i$] along the
         imaginary axis.
         @end tex
 
@@ -90,6 +90,9 @@ QUICKREF
 #ifdef __weak_alias
 __weak_alias(catan, _catan)
 #endif
+
+double atan2(double, double);
+double log(double);
 
 double complex
 catan(double complex z)

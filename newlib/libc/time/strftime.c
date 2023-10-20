@@ -340,6 +340,8 @@ locale, hard-coding the "C" locale settings.
 #  error "YEAR_BASE < 0"
 #endif
 
+int	sniprintf (char *, size_t, const char *, ...);
+
 /* Using the tm_year, tm_wday, and tm_yday components of TIM_P, return
    -1, 0, or 1 as the adjustment to add to the year for the ISO week
    numbering used in "%g%G%V", avoiding overflow.  */

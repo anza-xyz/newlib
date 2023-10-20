@@ -47,6 +47,8 @@ Supporting OS subroutines required (only if enabled): <<close>>, <<fstat>>,
 #include <stdlib.h>
 #include <stdio.h>
 
+int	fiprintf (FILE *, const char *, ...);
+
 #ifndef HAVE_ASSERT_FUNC
 /* func can be NULL, in which case no function information is given.  */
 void

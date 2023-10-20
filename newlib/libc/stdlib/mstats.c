@@ -80,6 +80,7 @@ not portable.
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdio.h>
+int	fiprintf (FILE *, const char *, ...);
 
 #ifndef _REENT_ONLY
 

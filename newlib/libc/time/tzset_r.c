@@ -12,6 +12,7 @@
 static char __tzname_std[11];
 static char __tzname_dst[11];
 static char *prev_tzenv = NULL;
+int	sscanf (const char *__restrict, const char *__restrict, ...);
 
 void
 _tzset_unlocked_r (struct _reent *reent_ptr)
@@ -43,11 +44,11 @@ _tzset_unlocked_r (struct _reent *reent_ptr)
 
   /* ignore implementation-specific format specifier */
   if (*tzenv == ':')
-    ++tzenv;  
+    ++tzenv;
 
   if (sscanf (tzenv, "%10[^0-9,+-]%n", __tzname_std, &n) <= 0)
     return;
- 
+
   tzenv += n;
 
   sign = 1;
@@ -61,14 +62,14 @@ _tzset_unlocked_r (struct _reent *reent_ptr)
 
   mm = 0;
   ss = 0;
- 
+
   if (sscanf (tzenv, "%hu%n:%hu%n:%hu%n", &hh, &n, &mm, &n, &ss, &n) < 1)
     return;
-  
+
   tz->__tzrule[0].offset = sign * (ss + SECSPERMIN * mm + SECSPERHOUR * hh);
   _tzname[0] = __tzname_std;
   tzenv += n;
-  
+
   if (sscanf (tzenv, "%10[^0-9,+-]%n", __tzname_dst, &n) <= 0)
     { /* No dst */
       _tzname[1] = _tzname[0];
@@ -91,10 +92,10 @@ _tzset_unlocked_r (struct _reent *reent_ptr)
   else if (*tzenv == '+')
     ++tzenv;
 
-  hh = 0;  
+  hh = 0;
   mm = 0;
   ss = 0;
-  
+
   n  = 0;
   if (sscanf (tzenv, "%hu%n:%hu%n:%hu%n", &hh, &n, &mm, &n, &ss, &n) <= 0)
     tz->__tzrule[1].offset = tz->__tzrule[0].offset - 3600;
@@ -113,15 +114,15 @@ _tzset_unlocked_r (struct _reent *reent_ptr)
 	  if (sscanf (tzenv, "M%hu%n.%hu%n.%hu%n", &m, &n, &w, &n, &d, &n) != 3 ||
 	      m < 1 || m > 12 || w < 1 || w > 5 || d > 6)
 	    return;
-	  
+
 	  tz->__tzrule[i].ch = 'M';
 	  tz->__tzrule[i].m = m;
 	  tz->__tzrule[i].n = w;
 	  tz->__tzrule[i].d = d;
-	  
+
 	  tzenv += n;
 	}
-      else 
+      else
 	{
 	  char *end;
 	  if (*tzenv == 'J')
@@ -131,9 +132,9 @@ _tzset_unlocked_r (struct _reent *reent_ptr)
 	    }
 	  else
 	    ch = 'D';
-	  
+
 	  d = strtoul (tzenv, &end, 10);
-	  
+
 	  /* if unspecified, default to US settings */
 	  /* From 1987-2006, US was M4.1.0,M10.5.0, but starting in 2007 is
 	   * M3.2.0,M11.1.0 (2nd Sunday March through 1st Sunday November)  */
@@ -159,26 +160,26 @@ _tzset_unlocked_r (struct _reent *reent_ptr)
 	      tz->__tzrule[i].ch = ch;
 	      tz->__tzrule[i].d = d;
 	    }
-	  
+
 	  tzenv = end;
 	}
-      
+
       /* default time is 02:00:00 am */
       hh = 2;
       mm = 0;
       ss = 0;
       n = 0;
-      
+
       if (*tzenv == '/')
 	sscanf (tzenv, "/%hu%n:%hu%n:%hu%n", &hh, &n, &mm, &n, &ss, &n);
 
       tz->__tzrule[i].s = ss + SECSPERMIN * mm + SECSPERHOUR  * hh;
-      
+
       tzenv += n;
     }
 
   __tzcalc_limits (tz->__tzyear);
-  _timezone = tz->__tzrule[0].offset;  
+  _timezone = tz->__tzrule[0].offset;
   _daylight = tz->__tzrule[0].offset != tz->__tzrule[1].offset;
 }
 

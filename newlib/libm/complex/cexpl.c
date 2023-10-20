@@ -33,6 +33,9 @@
 #include <math.h>
 
 #if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
+
+long double expl(long double);
+
 long double complex
 cexpl(long double complex z)
 {

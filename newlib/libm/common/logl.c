@@ -33,10 +33,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* On platforms where long double is as wide as double.  */
 #ifdef _LDBL_EQ_DBL
+
+double log(double);
+
 long double
 logl (long double x)
 {
   return log(x);
 }
 #endif
-

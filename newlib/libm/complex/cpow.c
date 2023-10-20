@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * imported and modified include for newlib 2010/10/03 
+ * imported and modified include for newlib 2010/10/03
  * Marco Atzeri <marco_atzeri@yahoo.it>
  */
 
@@ -49,13 +49,13 @@ SYNOPSIS
 
 DESCRIPTION
         @ifnottex
-        The cpow functions compute the complex power function x^y 
-        power, with a branch cut for the first parameter along the 
+        The cpow functions compute the complex power function x^y
+        power, with a branch cut for the first parameter along the
         negative real axis.
         @end ifnottex
         @tex
-        The cpow functions compute the complex power function $x^y$ 
-        power, with a branch cut for the first parameter along the 
+        The cpow functions compute the complex power function $x^y$
+        power, with a branch cut for the first parameter along the
         negative real axis.
         @end tex
 
@@ -76,6 +76,10 @@ QUICKREF
 
 #include <complex.h>
 #include <math.h>
+
+double pow(double, double);
+double exp(double);
+double log(double);
 
 double complex
 cpow(double complex a, double complex z)

@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * imported and modified include for newlib 2010/10/03 
+ * imported and modified include for newlib 2010/10/03
  * Marco Atzeri <marco_atzeri@yahoo.it>
  */
 
@@ -48,14 +48,14 @@ SYNOPSIS
 
 
 DESCRIPTION
-        These functions compute the complex square root of <[z]>, with 
-        a branch cut along the negative real axis. 
+        These functions compute the complex square root of <[z]>, with
+        a branch cut along the negative real axis.
 
         <<csqrtf>> is identical to <<csqrt>>, except that it performs
         its calculations on <<floats complex>>.
 
 RETURNS
-        The csqrt functions return the complex square root value, in 
+        The csqrt functions return the complex square root value, in
         the range of the right halfplane (including the imaginary axis).
 
 PORTABILITY
@@ -69,6 +69,8 @@ QUICKREF
 
 #include <complex.h>
 #include <math.h>
+
+double sqrt(double);
 
 double complex
 csqrt(double complex z)

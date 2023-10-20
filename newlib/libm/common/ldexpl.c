@@ -33,10 +33,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* On platforms where long double is as wide as double.  */
 #ifdef _LDBL_EQ_DBL
+
+extern double ldexp (double, int);
+
 long double
 ldexpl (long double value, int exp)
 {
   return ldexp(value, exp);
 }
 #endif
-

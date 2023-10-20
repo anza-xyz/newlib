@@ -331,6 +331,8 @@ extern void __malloc_unlock(struct _reent *);
 extern void __malloc_lock();
 extern void __malloc_unlock();
 #endif
+int	fprintf (FILE *__restrict, const char *__restrict, ...);
+int	fiprintf (FILE *, const char *, ...);
 
 #if __STD_C
 #define RARG struct _reent *reent_ptr,

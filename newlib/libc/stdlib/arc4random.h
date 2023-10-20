@@ -47,6 +47,8 @@
 
 #endif /* _ARC4_LOCK_INIT */
 
+void raise(int);
+
 #ifndef __SINGLE_THREAD__
 _ARC4_LOCK_INIT
 #endif

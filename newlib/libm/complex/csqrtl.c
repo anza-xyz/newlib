@@ -49,6 +49,9 @@ __RCSID("$NetBSD: csqrtl.c,v 1.2 2014/10/11 00:43:51 christos Exp $");
 
 #define cpackl(r, i) ((r) + (i) * I)
 
+long double hypotl(long double, long double);
+long double sqrtl(long double);
+
 #if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
 long double complex
 csqrtl(long double complex z)

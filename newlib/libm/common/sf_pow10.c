@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper pow10f(x)
  */
 
@@ -21,6 +21,8 @@
 #include "fdlibm.h"
 #include <errno.h>
 #include <math.h>
+
+float powf(float, float);
 
 #ifdef __STDC__
 	float pow10f(float x)		/* wrapper pow10f */

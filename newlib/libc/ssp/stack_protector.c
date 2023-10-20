@@ -31,6 +31,8 @@ __stack_chk_init (void)
 }
 #endif
 
+void raise(int);
+
 void
 __attribute__((__noreturn__))
 __stack_chk_fail (void)

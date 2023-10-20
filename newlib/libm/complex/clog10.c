@@ -32,6 +32,9 @@ PORTABILITY
 #include <complex.h>
 #include <math.h>
 
+double log10(double);
+double atan2(double, double);
+
 double complex
 clog10(double complex z)
 {

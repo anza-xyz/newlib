@@ -40,6 +40,8 @@ __RCSID("$NetBSD: vsnprintf_chk.c,v 1.5 2008/04/28 20:23:00 martin Exp $");
 
 #undef vsnprintf
 
+int	vsnprintf (char *__restrict, size_t, const char *__restrict, __VALIST);
+
 int
 __vsnprintf_chk(char * __restrict buf, size_t len, int flags, size_t slen,
     const char * __restrict fmt, va_list ap)

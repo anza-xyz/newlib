@@ -8,7 +8,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  *
@@ -17,6 +17,8 @@
 #include "fdlibm.h"
 #include <reent.h>
 #include <errno.h>
+
+float lgammaf(float);
 
 #ifdef __STDC__
 	float gammaf(float x)

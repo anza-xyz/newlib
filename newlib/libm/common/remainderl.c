@@ -33,10 +33,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* On platforms where long double is as wide as double.  */
 #ifdef _LDBL_EQ_DBL
+
+double remainder(double, double);
+
 long double
 remainderl (long double x, long double p)
 {
   return remainder(x, p);
 }
 #endif
-

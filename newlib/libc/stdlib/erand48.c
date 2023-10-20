@@ -12,6 +12,7 @@
  */
 
 #include "rand48.h"
+double ldexp(double x, int expn);
 
 double
 _erand48_r (struct _reent *r,

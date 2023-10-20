@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+int	fiprintf (FILE *, const char *, ...);
 
 void
 __eprintf (format, file, line, expression)

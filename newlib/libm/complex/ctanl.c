@@ -35,6 +35,10 @@
 #include "cephes_subrl.h"
 
 #if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
+
+long double coshl(long double);
+long double sinhl(long double);
+
 long double complex
 ctanl(long double complex z)
 {

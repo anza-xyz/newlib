@@ -36,6 +36,11 @@
 /* calculate cosh and sinh */
 
 #if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
+
+long double coshl(long double);
+long double sinhl(long double);
+long double expl(long double);
+
 void
 _cchshl(long double x, long double *c, long double *s)
 {

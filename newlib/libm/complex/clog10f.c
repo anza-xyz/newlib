@@ -1,6 +1,9 @@
 #include <complex.h>
 #include <math.h>
 
+float log10f(float);
+float atan2f(float, float);
+
 float complex
 clog10f(float complex z)
 {

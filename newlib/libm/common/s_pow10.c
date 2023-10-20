@@ -26,7 +26,7 @@ SYNOPSIS
 	float pow10f(float <[x]>);
 
 DESCRIPTION
-	<<pow10>> and <<pow10f>> calculate 10 ^ <[x]>, that is, 
+	<<pow10>> and <<pow10f>> calculate 10 ^ <[x]>, that is,
 	@ifnottex
 	10 raised to the power <[x]>.
 	@end ifnottex
@@ -54,6 +54,8 @@ PORTABILITY
 #include <math.h>
 
 #ifndef _DOUBLE_IS_32BITS
+
+double pow(double, double);
 
 #ifdef __STDC__
 	double pow10(double x)		/* wrapper pow10 */

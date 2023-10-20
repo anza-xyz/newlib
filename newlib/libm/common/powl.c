@@ -33,10 +33,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* On platforms where long double is as wide as double.  */
 #ifdef _LDBL_EQ_DBL
+
+double pow(double, double);
+
 long double
 powl (long double x, long double y)
 {
   return pow(x, y);
 }
 #endif
-

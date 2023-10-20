@@ -18,6 +18,7 @@
 
 #include <sys/types.h>
 #include <stdlib.h>
+uint32_t arc4random(void);
 
 /*
  * Calculate a uniformly distributed random number less than upper_bound

@@ -32,6 +32,8 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <errno.h>
 #include "fdlibm.h"
 
+double hypot(double, double);
+
 long double
 hypotl (long double x, long double y)
 {

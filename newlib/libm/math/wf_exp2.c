@@ -8,12 +8,12 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
 
-/* 
+/*
  * wrapper exp2f(x)
  */
 
@@ -21,6 +21,8 @@
 #if __OBSOLETE_MATH
 #include <errno.h>
 #include <math.h>
+
+float powf(float, float);
 
 #ifdef __STDC__
 	float exp2f(float x)		/* wrapper exp2f */

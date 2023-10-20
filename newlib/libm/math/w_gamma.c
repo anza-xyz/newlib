@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  *
@@ -140,7 +140,7 @@ in terms of the base return values, although the <[signgam]> global for
 #include <errno.h>
 
 #ifndef _DOUBLE_IS_32BITS
-
+extern double lgamma (double);
 #ifdef __STDC__
 	double gamma(double x)
 #else

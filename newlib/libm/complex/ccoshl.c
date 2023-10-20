@@ -32,6 +32,9 @@
 #include <complex.h>
 #include <math.h>
 
+long double coshl(long double);
+long double sinhl(long double);
+
 #ifdef _LDBL_EQ_DBL
 long double complex
 ccoshl(long double complex z)

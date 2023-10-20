@@ -52,6 +52,8 @@ QUICKREF
 #include <stdlib.h>
 #include <reent.h>
 
+int	siprintf (char *, const char *, ...);
+
 char *
 strsignal (int signal)
 {
@@ -225,7 +227,7 @@ strsignal (int signal)
       buffer = "File size limit exceeded";
       break;
 #endif
-#ifdef SIGVTALRM 
+#ifdef SIGVTALRM
     case SIGVTALRM :
       buffer = "Virtual timer expired";
       break;

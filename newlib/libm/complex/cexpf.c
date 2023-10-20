@@ -35,6 +35,8 @@
 #include <complex.h>
 #include <math.h>
 
+float expf(float);
+
 float complex
 cexpf(float complex z)
 {

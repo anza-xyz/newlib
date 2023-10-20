@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "mprec.h"
+int	sprintf (char *__restrict, const char *__restrict, ...);
 
 /* These are the externally visible entries. */
 /* linux name:  long double _IO_strtold (char *, char **); */
@@ -334,7 +335,7 @@ static const char *const ermsg[7] = {
  * of octal integers to eliminate decimal to binary conversion
  * errors that might be introduced by the compiler.
  *
- * For computers, such as IBM PC, that follow the IEEE 
+ * For computers, such as IBM PC, that follow the IEEE
  * Standard for Binary Floating Point Arithmetic (ANSI/IEEE
  * Std 754-1985), the symbol IBMPC should be defined.  These
  * numbers have 53-bit significands.  In this mode, constants
@@ -2935,7 +2936,7 @@ stripspaces:
   return outstr;
 }
 
-/* Routine used to tell if long double is NaN or Infinity or regular number. 
+/* Routine used to tell if long double is NaN or Infinity or regular number.
    Returns:  0 = regular number
              1 = Nan
              2 = Infinity
@@ -3297,7 +3298,7 @@ bxit:
 ;	Convert ASCII string to quadruple precision floating point
 ;
 ;		Numeric input is free field decimal number
-;		with max of 15 digits with or without 
+;		with max of 15 digits with or without
 ;		decimal point entered as ASCII from teletype.
 ;	Entering E after the number followed by a second
 ;	number causes the second number to be interpreted

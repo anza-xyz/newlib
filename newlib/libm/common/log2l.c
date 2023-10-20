@@ -29,10 +29,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "local.h"
 
 #ifdef _LDBL_EQ_DBL
+
+double log2(double);
+
 long double
 log2l (long double x)
 {
   return log2(x);
 }
 #endif
-

@@ -38,6 +38,10 @@ __weak_alias(catanl, _catanl)
 #endif
 
 #if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
+
+long double atan2l(long double, long double);
+long double logl(long double);
+
 long double complex
 catanl(long double complex z)
 {

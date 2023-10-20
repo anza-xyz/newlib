@@ -33,6 +33,11 @@
 #include <math.h>
 
 #if defined (_LDBL_EQ_DBL) || defined (__CYGWIN__)
+
+long double expl(long double);
+long double logl(long double);
+long double powl(long double, long double);
+
 long double complex
 cpowl(long double complex a, long double complex z)
 {

@@ -33,10 +33,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* On platforms where long double is as wide as double.  */
 #ifdef _LDBL_EQ_DBL
+
+double atanh(double);
+
 long double
 atanhl (long double x)
 {
   return atanh(x);
 }
 #endif
-

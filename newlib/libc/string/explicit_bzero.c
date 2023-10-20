@@ -5,7 +5,7 @@
  */
 
 #include <string.h>
-
+void	 bzero(void *, size_t);
 /*
  * explicit_bzero - don't let the compiler optimize away bzero
  */

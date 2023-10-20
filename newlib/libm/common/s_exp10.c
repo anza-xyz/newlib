@@ -26,7 +26,7 @@ SYNOPSIS
 	float exp10f(float <[x]>);
 
 DESCRIPTION
-	<<exp10>> and <<exp10f>> calculate 10 ^ <[x]>, that is, 
+	<<exp10>> and <<exp10f>> calculate 10 ^ <[x]>, that is,
 	@ifnottex
 	10 raised to the power <[x]>.
 	@end ifnottex
@@ -55,6 +55,8 @@ PORTABILITY
 #include <math.h>
 
 #ifndef _DOUBLE_IS_32BITS
+
+double pow(double, double);
 
 #ifdef __STDC__
 	double exp10(double x)		/* wrapper exp10 */

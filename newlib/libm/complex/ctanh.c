@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * imported and modified include for newlib 2010/10/03 
+ * imported and modified include for newlib 2010/10/03
  * Marco Atzeri <marco_atzeri@yahoo.it>
  */
 
@@ -67,6 +67,9 @@ QUICKREF
 
 #include <complex.h>
 #include <math.h>
+
+double cosh(double);
+double sinh(double);
 
 double complex
 ctanh(double complex z)

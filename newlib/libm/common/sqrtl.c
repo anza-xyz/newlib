@@ -31,6 +31,8 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <math.h>
 #include "local.h"
 
+double sqrt(double);
+
 #ifdef _LDBL_EQ_DBL
 /* On platforms where long double is as wide as double.  */
 long double
@@ -191,5 +193,3 @@ sqrtl (long double x)
   return ux.extu_ld;
 }
 #endif /* ! _LDBL_EQ_DBL */
-
-

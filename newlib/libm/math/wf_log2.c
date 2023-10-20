@@ -24,6 +24,8 @@
 #undef log2
 #undef log2f
 
+float logf(float);
+
 #ifdef __STDC__
 	float log2f(float x)		/* wrapper log2f */
 #else
